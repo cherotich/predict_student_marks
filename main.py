@@ -26,42 +26,13 @@ selected_model = load_model()
 uploaded_file = st.file_uploader("Select a csv file containing the number of study hours")
 if uploaded_file is not None:
 
-    #  # To read file as bytes:
-    # bytes_data = uploaded_file.getvalue()
-    # st.write(bytes_data)
-    #  # To convert to a string based IO:
-    # stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
-    # st.write(stringio)
 
-    #  # To read file as string:
-    # string_data = stringio.read()
-    # st.write(string_data)
 
      # Can be used wherever a "file-like" object is accepted:
     df = pd.read_csv(uploaded_file)
     number = st.number_input("Number of Rows to view max=10",5,10)
     st.dataframe(df.head(number))
     # st.write(dataframe)
-
-# def file_selector(folder_path='./datasets'):
-#     filenames = os.listdir(folder_path)
-#     selected_filename = st.selectbox("Selecte a csv file containing the number of study hours ", filenames)
-#     return os.path.join(folder_path,selected_filename)
-                
-# filename = file_selector()
-# st.info("You have selected {}".format(filename))  
-
-#     #Read data
-# df = pd.read_csv(filename)
-
-# first 10 rows
-# number = st.number_input("Number of Rows to view max=10",5,10)
-# st.dataframe(df.head(number))
-
-
-
-
-
 
     st.write(df.shape)
     data_dim = st.radio("Show Dimension By",("Rows","Columns"))
@@ -136,32 +107,5 @@ if st.checkbox("Use already existing sample dataset"):
             file_name='large_df.csv',
             mime='text/csv',
     )
-    #     st.info("You have selected ")
-    # r = file_selector()
-    # st.info(r)
 
-    
-
-
-
-# def file_selector(folder_path='./datasets'):
-
-#     filenames = os.listdir(folder_path)
-#     selected_filename = st.selectbox("Select a csv file containing the number of study hours ", filenames)
-#     return os.path.join(folder_path,selected_filename)
-                    
-# filename = file_selector()
-# st.info("You have selected {}".format(filename))  
-
-#         #Read data
-# df = pd.read_csv(filename)
-
-#     # first 10 rows
-# number1 = st.number_input("Number of Rows to view max=10",5,10)
-# st.dataframe(df.head(number1))
-    
-            
-            
-# number = st.number_input('Enter the number of study hours')
-# st.write('The score of the student is ', number)
 
