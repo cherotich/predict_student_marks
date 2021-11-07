@@ -7,6 +7,7 @@ import streamlit as st
 import altair as alt
 import joblib
 import os
+import seaborn as sns
 
 ######################
 # Page Title
@@ -83,7 +84,7 @@ if st.checkbox("Use already existing sample dataset"):
     number1 = st.number_input("Number of Rows to view maximum is 10",5,10)
     st.dataframe(df.head(number1))
     st.write(df.shape)
-    data_dim = st.radio("Show Dimension By",("Rows","Columns"))
+    data_dim = st.radio("Show Dimension in terms of",("Rows","Columns"))
     if data_dim == 'Rows':
         st.text("Number of Rows")
         st.write(df.shape[0])
@@ -107,5 +108,8 @@ if st.checkbox("Use already existing sample dataset"):
             file_name='large_df.csv',
             mime='text/csv',
     )
+    st.write(""" The relationship between hours and the number of score""")
+    fig = sns.pairplot(df)
+    st.pyplot(fig)
 
 
